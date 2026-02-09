@@ -608,14 +608,14 @@ h2 {
 <div class="header">
   <h1>For My Gullu 🌻</h1>
   <h2>Shrutika 🐘💛</h2>
-  <p class="subtitle">Complete each task to unlock the next surprise 💕</p>
+  <p class="subtitle">Himmat hai toh jo bola hai wo kro!! 😏💕</p>
 </div>
 
 <!-- Progress Bar -->
 <div class="progress-container">
   <div class="progress-bar" id="progressBar"></div>
 </div>
-<div class="progress-text" id="progressText">Let's begin your journey... 🌻</div>
+<div class="progress-text" id="progressText">Chaliye shuru krte hai... 🌻</div>
 
 <!-- Content Container -->
 <div id="contentContainer">
@@ -623,9 +623,9 @@ h2 {
   <!-- Initial Card -->
   <div class="card" id="mainCard">
     <p class="tease" id="teaseText">
-      Hey there, my beautiful sunflower 🌻<br>
-      I've prepared some surprises for you...<br>
-      Ready to play? 😏
+      Hey there, my beautiful dumbooo 🌻<br>
+      मी तुझ्यासाठी काही surprises तयार केली आहेत…<br>
+      Are you Ready ? 😏
     </p>
     <p class="hint">Tap to start! 💛</p>
     <div id="taskStatus" class="task-status hidden"></div>
@@ -655,25 +655,25 @@ const contentContainer = document.getElementById("contentContainer");
 
 const stageData = [
   {
-    tease: "First challenge, Gullu! 🐘<br>Think you can catch all the elephants?<br>Let's see... 😌",
+    tease: "First challenge, Gullu! 🐘<br>You wanted to have a baby elephant now dare you to catch all the elephants!<br>Scroll up catch them one by one... 😌",
     hint: "Catch 5 elephants to continue! 🎯",
     progress: "Challenge 1: Catch the Elephants 🐘"
   },
   {
-    tease: "Good job! Here's a reward... 🎁<br>A special little something<br>Just for you 😏",
-    hint: "Tap to see a special photo 📸",
-    progress: "Reward Time! 🌻"
+    tease: "Good girl! Here's a reward... 🎁<br>Since you caught all baby elephant and saw mine too.. Let's continue🥺",
+    hint: "Tap to continue 📸",
+    progress: "Wohooo! 🌻"
   },
   {
     tease: "Aww, loved it? 🥹<br>Now read my heart... 💌<br>Open all the love notes! 🥺",
     hint: "Open all 6 notes to unlock next 💛",
     progress: "Challenge 2: Read All Love Notes 💌"
   },
-  {
-    tease: "You read them all! 💕<br>Ready for everything else?<br>The full gallery awaits 🐻",
-    hint: "Tap for the full gallery! ✨",
-    progress: "Almost there... 🎉"
-  },
+{
+  tease: "Handwritten letters felt a little outdated… and my handwriting isn’t exactly a masterpiece 😅💕<br>So the developer in me made this instead.<br>I really hope you loved it, Gullu 🐻",
+  hint: "One last tap… just for you ✨",
+  progress: "So close now… 🎉"
+},
   {
     tease: "You made it, my love! 🥹💛<br>Here's everything...<br>Because you're everything to me 🌻",
     hint: "This is it! 💕",
@@ -684,9 +684,9 @@ const stageData = [
 const notes = [
   "You know what? You're like a sunflower 🌻 - you make everything brighter just by being there.",
   "That tiny elephant energy 🐘 - small but mighty, sweet but strong. That's my Gullu 💛",
-  "One day, I promise, I'll buy you a whole store of jhumke 💎 Just to see that smile!",
+  "One day, I promise, I'll buy you a whole store of jhumke 💎, cakes and everything. Just to see that smile!",
   "My peace in chaos, my calm in the storm, my everything in one person 💕",
-  "Every time I see you, my heart does that stupid happy dance 💃✨",
+  "No matter where I am, a part of me is always thinking of you.✨",
   "You're the kind of beautiful that poets write about 🌺 Lucky me, I get to call you mine!"
 ];
 
@@ -742,7 +742,7 @@ function executeStage(stage) {
       createSection('firstPhotoSection', createPhotoSection(
         "Here's My Hathnikaa! 🐘💕",
         "Look at this cuteness... 😍",
-        [{ src: "img4.jpg", caption: "Ho Ho Hathnikaa! Too cute na? 😍✨" }]
+        [{ src: "img1.jpeg", caption: "My Most Beautiful Hathnikaa Iyer! Too cute na? 😍✨" }]
       ));
       moveCardBelow('firstPhotoSection');
       break;
@@ -764,9 +764,9 @@ function executeStage(stage) {
         "All My Favorite Moments 💕",
         "Every one of these makes my heart smile 🥹",
         [
-          { src: "img1.jpeg", caption: "This smile? It's my favorite view in the whole world 😍" },
-          { src: "img2.jpg", caption: "Proof that I'm the luckiest person alive 💖✨" },
-          { src: "img3.png", caption: "My forever favorite - you, always 🐻❤️" }
+          { src: "img2.jpeg", caption: "This gorgeous smile? So dangerous 😂😂😂" },
+          { src: "img3.jpeg", caption: "Proof that I'm the luckiest person alive 💖✨" },
+          { src: "img4.jpeg", caption: "My forever favorite view- you, always 🐻❤️" }
         ]
       ));
       moveCardBelow('allPhotosSection');
@@ -964,8 +964,7 @@ function createFinalMessage() {
       <p style="font-size:1.4rem;color:#78350f;font-weight:600;line-height:2;">
         You know what? Every moment with you is a treasure 💛<br>
         Every smile, every laugh, every little thing... 🌻<br>
-        You're my sunshine, my peace, my everything 🐘<br>
-        Can't wait to buy you ALL the jhumke in the world! 💕<br><br>
+        You're my sunshine, my peace, my everything 🐘💕<br><br>
         <span style="font-size:1.8rem;background:linear-gradient(45deg,#ff6b35,#f7931e,#fdc500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
           Love you forever, Gullu 🐘❤️✨
         </span>
