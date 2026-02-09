@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>For My Gullu 🌻</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Quicksand', sans-serif;
+  background: linear-gradient(135deg, #fff9e6 0%, #ffe4b3 25%, #ffd699 50%, #ffcc80 75%, #ffc266 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><text y="20" font-size="20">🌻</text></svg>'), auto;
+  position: relative;
+}
+
+/* Sunflower Petals Falling */
+.petal {
+  position: fixed;
+  top: -50px;
+  font-size: 2rem;
+  pointer-events: none;
+  animation: fall linear forwards;
+  opacity: 0.8;
+  z-index: 1;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Cursor Trail */
+.trail {
+  position: fixed;
+  pointer-events: none;
+  font-size: 1.2rem;
+  animation: trailFade 1s ease-out forwards;
+  z-index: 9999;
+}
+
+@keyframes trailFade {
+  to {
+    transform: scale(0.3) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem 1rem;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+}
+
+/* Header with glow */
+.header {
+  margin-bottom: 3rem;
+}
+
+h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: 4rem;
+  color: #ca8a04;
+  animation: bounce 2s infinite;
+}
+
+h2 {
+  font-family: 'Dancing Script', cursive;
+  color: #d97706;
+  font-size: 2rem;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #92400e;
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+/* Progress Bar */
+.progress-container {
+  width: 100%;
+  max-width: 600px;
+  height: 30px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 20px;
+  margin: 2rem auto;
+  overflow: hidden;
+  border: 3px solid #fbbf24;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #fbbf24, #f59e0b, #d97706);
+  transition: width 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.progress-text {
+  text-align: center;
+  margin-top: 0.5rem;
+  font-weight: 600;
+  color: #78350f;
+  font-size: 0.9rem;
+}
+
+/* Main Interactive Card */
+.card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(254,252,232,0.95));
+  border-radius: 2.5rem;
+  padding: 3rem 2rem;
+  box-shadow: 0 25px 60px rgba(202,138,4,.4), 0 0 0 1px rgba(255,255,255,0.5) inset;
+  cursor: pointer;
+  margin: 2rem 0;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  animation: slideIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-30px) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #fbbf24, #f59e0b, #d97706, #fbbf24);
+  border-radius: 2.5rem;
+  z-index: -1;
+  animation: borderRotate 3s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+@keyframes borderRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 30px 70px rgba(202,138,4,.5);
+}
+
+.card.locked {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.card.clicked {
+  animation: wiggle .5s ease, pulse 0.3s ease;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.tease {
+  font-size: 1.5rem;
+  color: #78350f;
+  font-weight: 600;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.hint {
+  font-size: 1.1rem;
+  font-style: italic;
+  color: #d97706;
+  padding: 1rem;
+  background: rgba(251, 191, 36, 0.2);
+  border-radius: 15px;
+  display: inline-block;
+  margin-top: 1rem;
+  animation: shake 2s infinite;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-3px); }
+  20%, 40%, 60%, 80% { transform: translateX(3px); }
+}
+
+.task-status {
+  font-size: 1rem;
+  color: #dc2626;
+  font-weight: 700;
+  margin-top: 1rem;
+  padding: 0.8rem;
+  background: rgba(220, 38, 38, 0.1);
+  border-radius: 10px;
+  border: 2px solid #fca5a5;
+}
+
+.task-status.completed {
+  color: #15803d;
+  background: rgba(21, 128, 61, 0.1);
+  border-color: #86efac;
+}
+
+.hidden { display: none; }
+
+/* Section Container */
+.section {
+  margin: 3rem 0;
+  animation: fadeInUp 0.8s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mini Game Section */
+.mini-game {
+  background: linear-gradient(135deg, rgba(254,243,199,0.9), rgba(253,230,138,0.9));
+  border-radius: 2rem;
+  padding: 2.5rem;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.mini-game h3 {
+  color: #92400e;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.game-area {
+  position: relative;
+  height: 250px;
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  border-radius: 1.5rem;
+  margin: 1.5rem 0;
+  overflow: hidden;
+  border: 3px dashed #fbbf24;
+}
+
+.elephant-sprite {
+  position: absolute;
+  font-size: 3rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  animation: elephantMove 3s ease-in-out infinite;
+}
+
+.elephant-sprite:hover {
+  transform: scale(1.3) rotate(10deg);
+}
+
+@keyframes elephantMove {
+  0%, 100% { transform: translateX(0) translateY(0); }
+  25% { transform: translateX(20px) translateY(-10px); }
+  50% { transform: translateX(0) translateY(-20px); }
+  75% { transform: translateX(-20px) translateY(-10px); }
+}
+
+.catch-message {
+  font-size: 1.2rem;
+  color: #15803d;
+  font-weight: 700;
+  margin-top: 1rem;
+  animation: bounce 1s infinite;
+}
+
+/* Notes Grid */
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.note {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.note:hover {
+  transform: translateY(-8px);
+}
+
+.envelope {
+  padding: 2.5rem;
+  border-radius: 2rem;
+  border: 3px dashed #fbbf24;
+  background: linear-gradient(135deg, #ffffff, #fffbeb);
+  box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.envelope::before {
+  content: '💌';
+  position: absolute;
+  font-size: 4rem;
+  opacity: 0.1;
+  right: -10px;
+  bottom: -10px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.envelope:hover {
+  border-color: #f59e0b;
+  box-shadow: 0 15px 45px rgba(245,158,11,0.4);
+  transform: scale(1.05);
+}
+
+.revealed {
+  padding: 2.5rem;
+  border-radius: 2rem;
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: #78350f;
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  animation: bloom .8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  box-shadow: 0 20px 50px rgba(251,191,36,0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.revealed::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.6), transparent);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  to {
+    width: 500px;
+    height: 500px;
+    opacity: 0;
+  }
+}
+
+.revealed img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 1.5rem;
+  margin-bottom: 1rem;
+  filter: blur(15px);
+  animation: unblur 1.5s ease forwards;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Photo Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+.photo-card {
+  background: linear-gradient(135deg, #ffffff, #fefce8);
+  padding: 1.5rem;
+  border-radius: 2rem;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  animation: photoPop .8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
+  transition: left 0.5s;
+}
+
+.photo-card:hover::before {
+  left: 100%;
+}
+
+.photo-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+}
+
+.photo-card img {
+  width: 100%;
+  border-radius: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.photo-card:hover img {
+  transform: scale(1.05);
+}
+
+.photo-card p {
+  opacity: 0;
+  animation: captionFade .8s ease forwards;
+  animation-delay: .5s;
+  margin-top: 1rem;
+  font-weight: 700;
+  color: #92400e;
+  font-size: 1.1rem;
+}
+
+/* Special Effects */
+.emoji {
+  position: fixed;
+  font-size: 2rem;
+  pointer-events: none;
+  animation: emojiPop 1.5s ease forwards;
+  z-index: 9999;
+}
+
+.heart-burst {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.heart-particle {
+  position: absolute;
+  font-size: 1.5rem;
+  animation: heartBurst 1.5s ease-out forwards;
+}
+
+@keyframes heartBurst {
+  to {
+    transform: translateY(-80px) scale(0);
+    opacity: 0;
+  }
+}
+
+.floating {
+  position: fixed;
+  bottom: -50px;
+  font-size: 2rem;
+  animation: floatUp 5s linear forwards;
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sparkle {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: #fbbf24;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: sparkleFade 1s ease-out forwards;
+  box-shadow: 0 0 10px #fbbf24;
+  z-index: 9999;
+}
+
+@keyframes sparkleFade {
+  to {
+    transform: translateY(-40px) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Animations */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes bloom {
+  from {
+    transform: scale(0.5) rotate(-15deg);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
+}
+
+@keyframes unblur {
+  to { filter: blur(0); }
+}
+
+@keyframes photoPop {
+  from {
+    transform: scale(0.7) rotate(-5deg);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) rotate(0);
+    opacity: 1;
+  }
+}
+
+@keyframes captionFade {
+  to { opacity: 1; }
+}
+
+@keyframes wiggle {
+  0% { transform: rotate(0); }
+  25% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+  75% { transform: rotate(-3deg); }
+  100% { transform: rotate(0); }
+}
+
+@keyframes emojiPop {
+  from {
+    transform: scale(0) rotate(0);
+    opacity: 1;
+  }
+  to {
+    transform: scale(2) translateY(-60px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-120vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  h1 { font-size: 3rem; }
+  .notes-grid, .gallery {
+    grid-template-columns: 1fr;
+  }
+  .card { padding: 2rem 1.5rem; }
+  .tease { font-size: 1.2rem; }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<div class="header">
+  <h1>For My Gullu 🌻</h1>
+  <h2>Shrutika 🐘💛</h2>
+  <p class="subtitle">Complete each task to unlock the next surprise 💕</p>
+</div>
+
+<!-- Progress Bar -->
+<div class="progress-container">
+  <div class="progress-bar" id="progressBar"></div>
+</div>
+<div class="progress-text" id="progressText">Let's begin your journey... 🌻</div>
+
+<!-- Content Container -->
+<div id="contentContainer">
+  
+  <!-- Initial Card -->
+  <div class="card" id="mainCard">
+    <p class="tease" id="teaseText">
+      Hey there, my beautiful sunflower 🌻<br>
+      I've prepared some surprises for you...<br>
+      Ready to play? 😏
+    </p>
+    <p class="hint">Tap to start! 💛</p>
+    <div id="taskStatus" class="task-status hidden"></div>
+  </div>
+
+</div>
+
+</div>
+
+<script>
+let currentStage = 0;
+const totalStages = 5;
+let isTaskComplete = true; // Start with true so first tap works
+
+// Task tracking
+let elephantCatches = 0;
+const MAX_CATCHES = 5;
+let notesOpened = 0;
+const TOTAL_NOTES = 6;
+
+const progressBar = document.getElementById("progressBar");
+const progressText = document.getElementById("progressText");
+const mainCard = document.getElementById("mainCard");
+const teaseText = document.getElementById("teaseText");
+const taskStatus = document.getElementById("taskStatus");
+const contentContainer = document.getElementById("contentContainer");
+
+const stageData = [
+  {
+    tease: "First challenge, Gullu! 🐘<br>Think you can catch all the elephants?<br>Let's see... 😌",
+    hint: "Catch 5 elephants to continue! 🎯",
+    progress: "Challenge 1: Catch the Elephants 🐘"
+  },
+  {
+    tease: "Good job! Here's a reward... 🎁<br>A special little something<br>Just for you 😏",
+    hint: "Tap to see a special photo 📸",
+    progress: "Reward Time! 🌻"
+  },
+  {
+    tease: "Aww, loved it? 🥹<br>Now read my heart... 💌<br>Open all the love notes! 🥺",
+    hint: "Open all 6 notes to unlock next 💛",
+    progress: "Challenge 2: Read All Love Notes 💌"
+  },
+  {
+    tease: "You read them all! 💕<br>Ready for everything else?<br>The full gallery awaits 🐻",
+    hint: "Tap for the full gallery! ✨",
+    progress: "Almost there... 🎉"
+  },
+  {
+    tease: "You made it, my love! 🥹💛<br>Here's everything...<br>Because you're everything to me 🌻",
+    hint: "This is it! 💕",
+    progress: "Complete! You're the best 🎊"
+  }
+];
+
+const notes = [
+  "You know what? You're like a sunflower 🌻 - you make everything brighter just by being there.",
+  "That tiny elephant energy 🐘 - small but mighty, sweet but strong. That's my Gullu 💛",
+  "One day, I promise, I'll buy you a whole store of jhumke 💎 Just to see that smile!",
+  "My peace in chaos, my calm in the storm, my everything in one person 💕",
+  "Every time I see you, my heart does that stupid happy dance 💃✨",
+  "You're the kind of beautiful that poets write about 🌺 Lucky me, I get to call you mine!"
+];
+
+// Main Card Click
+mainCard.onclick = (e) => {
+  if (!isTaskComplete) {
+    // Shake to indicate locked
+    mainCard.style.animation = 'none';
+    setTimeout(() => {
+      mainCard.style.animation = 'shake 0.5s ease';
+    }, 10);
+    return;
+  }
+
+  mainCard.classList.remove("clicked");
+  void mainCard.offsetWidth;
+  mainCard.classList.add("clicked");
+
+  createHeartBurst(e.clientX, e.clientY);
+  popEmoji(["🌻","💛","🐘","✨"][Math.floor(Math.random()*4)], e.clientX, e.clientY);
+  createSparkles(e.clientX, e.clientY);
+
+  currentStage++;
+  
+  if (currentStage > totalStages) return;
+
+  // Update progress
+  const progress = (currentStage / totalStages) * 100;
+  progressBar.style.width = progress + "%";
+  progressText.textContent = stageData[currentStage - 1].progress;
+
+  // Execute stage action
+  executeStage(currentStage);
+};
+
+function executeStage(stage) {
+  taskStatus.classList.add("hidden");
+
+  switch(stage) {
+    case 1:
+      // Elephant Game
+      isTaskComplete = false;
+      updateCardText(stageData[0]);
+      showTaskStatus("⏳ Task: Catch 5 elephants (0/5)");
+      createSection('elephantSection', createElephantGame());
+      moveCardBelow('elephantSection');
+      break;
+      
+    case 2:
+      // First Photo (no task)
+      isTaskComplete = true;
+      updateCardText(stageData[1]);
+      createSection('firstPhotoSection', createPhotoSection(
+        "Here's My Hathnikaa! 🐘💕",
+        "Look at this cuteness... 😍",
+        [{ src: "img4.jpg", caption: "Ho Ho Hathnikaa! Too cute na? 😍✨" }]
+      ));
+      moveCardBelow('firstPhotoSection');
+      break;
+      
+    case 3:
+      // Notes
+      isTaskComplete = false;
+      updateCardText(stageData[2]);
+      showTaskStatus("⏳ Task: Open all 6 love notes (0/6)");
+      createSection('notesSection', createNotesSection());
+      moveCardBelow('notesSection');
+      break;
+      
+    case 4:
+      // All Photos
+      isTaskComplete = true;
+      updateCardText(stageData[3]);
+      createSection('allPhotosSection', createPhotoSection(
+        "All My Favorite Moments 💕",
+        "Every one of these makes my heart smile 🥹",
+        [
+          { src: "img1.jpeg", caption: "This smile? It's my favorite view in the whole world 😍" },
+          { src: "img2.jpg", caption: "Proof that I'm the luckiest person alive 💖✨" },
+          { src: "img3.png", caption: "My forever favorite - you, always 🐻❤️" }
+        ]
+      ));
+      moveCardBelow('allPhotosSection');
+      break;
+      
+    case 5:
+      // Final Message
+      createSection('finalSection', createFinalMessage());
+      mainCard.style.display = 'none';
+      confettiBlast();
+      break;
+  }
+}
+
+function updateCardText(data) {
+  teaseText.innerHTML = data.tease;
+  mainCard.querySelector('.hint').textContent = data.hint;
+}
+
+function showTaskStatus(text, completed = false) {
+  taskStatus.textContent = text;
+  taskStatus.classList.remove("hidden");
+  if (completed) {
+    taskStatus.classList.add("completed");
+  } else {
+    taskStatus.classList.remove("completed");
+  }
+}
+
+function createSection(id, content) {
+  const section = document.createElement('div');
+  section.id = id;
+  section.className = 'section';
+  section.innerHTML = content;
+  contentContainer.appendChild(section);
+  
+  // Add event listeners after content is added
+  setTimeout(() => {
+    if (id === 'elephantSection') {
+      setupElephantGame();
+    } else if (id === 'notesSection') {
+      setupNotes();
+    }
+  }, 100);
+}
+
+function moveCardBelow(sectionId) {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    contentContainer.appendChild(mainCard);
+    setTimeout(() => {
+      mainCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 300);
+  }
+}
+
+// ===== ELEPHANT GAME =====
+function createElephantGame() {
+  return `
+    <div class="mini-game">
+      <h3>🎮 Catch Your Elephant! 🐘</h3>
+      <p style="color:#92400e;margin-bottom:1rem;">
+        Tap the moving elephant 5 times! Go go go! 😏
+      </p>
+      <div class="game-area" id="gameArea">
+        <div class="elephant-sprite" id="elephant">🐘</div>
+      </div>
+      <div id="catchCount" style="font-weight:600;color:#78350f;margin-top:1rem;font-size:1.2rem;">
+        Caught: <span id="catchNum">0</span>/5
+      </div>
+    </div>
+  `;
+}
+
+function setupElephantGame() {
+  const elephant = document.getElementById('elephant');
+  const catchNum = document.getElementById('catchNum');
+  
+  moveElephant();
+  
+  elephant.onclick = (e) => {
+    e.stopPropagation();
+    elephantCatches++;
+    catchNum.textContent = elephantCatches;
+    
+    popEmoji("💛", e.clientX, e.clientY);
+    createHeartBurst(e.clientX, e.clientY);
+    
+    showTaskStatus(`⏳ Task: Catch 5 elephants (${elephantCatches}/5)`);
+    
+    if (elephantCatches >= MAX_CATCHES) {
+      showTaskStatus("✅ All elephants caught! Tap below to continue 🎉", true);
+      elephant.style.display = 'none';
+      isTaskComplete = true;
+      confettiBlast();
+      setTimeout(() => {
+        mainCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 800);
+    } else {
+      moveElephant();
+    }
+  };
+}
+
+function moveElephant() {
+  const gameArea = document.getElementById('gameArea');
+  const elephant = document.getElementById('elephant');
+  if (!gameArea || !elephant) return;
+  
+  const maxX = gameArea.offsetWidth - 60;
+  const maxY = gameArea.offsetHeight - 60;
+  
+  const newX = Math.random() * maxX;
+  const newY = Math.random() * maxY;
+  
+  elephant.style.left = newX + "px";
+  elephant.style.top = newY + "px";
+}
+
+// ===== NOTES SECTION =====
+function createNotesSection() {
+  return `
+    <div style="background:linear-gradient(135deg,rgba(254,243,199,0.9),rgba(253,230,138,0.9));padding:2.5rem;border-radius:2rem;box-shadow:0 15px 40px rgba(0,0,0,0.2);">
+      <h2 style="color:#92400e;font-size:2rem;margin-bottom:1rem;">
+        💌 Little Love Notes for You
+      </h2>
+      <p style="color:#78350f;font-size:1.1rem;margin-bottom:1rem;">
+        Read each one carefully... 🥺💛
+      </p>
+      <div class="notes-grid" id="notesGrid"></div>
+    </div>
+  `;
+}
+
+function setupNotes() {
+  const notesGrid = document.getElementById('notesGrid');
+  
+  notes.forEach((text, index) => {
+    setTimeout(() => {
+      const n = document.createElement("div");
+      n.className = "note";
+      n.dataset.opened = "false";
+      n.innerHTML = `<div class="envelope">✉️ Tap to Open 🌻</div>`;
+      n.onclick = (e) => {
+        if (n.dataset.opened === "true") return;
+        
+        n.dataset.opened = "true";
+        n.innerHTML = `<div class="revealed">${text}</div>`;
+        popEmoji("💕", e.clientX, e.clientY);
+        createHeartBurst(e.clientX, e.clientY);
+        createSparkles(e.clientX, e.clientY);
+        
+        notesOpened++;
+        showTaskStatus(`⏳ Task: Open all 6 love notes (${notesOpened}/6)`);
+        
+        if (notesOpened >= TOTAL_NOTES) {
+          setTimeout(() => {
+            showTaskStatus("✅ All notes read! My heart is happy 🥹 Tap below!", true);
+            isTaskComplete = true;
+            confettiBlast();
+            setTimeout(() => {
+              mainCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 800);
+          }, 500);
+        }
+      };
+      notesGrid.appendChild(n);
+    }, index * 200);
+  });
+}
+
+// ===== PHOTO SECTION =====
+function createPhotoSection(title, subtitle, photos) {
+  let photosHTML = photos.map((p, i) => `
+    <div class="photo-card" style="animation-delay:${i * 0.2}s">
+      <img src="${p.src}" alt="${p.caption}">
+      <p>${p.caption}</p>
+    </div>
+  `).join('');
+  
+  return `
+    <div style="background:linear-gradient(135deg,rgba(254,243,199,0.9),rgba(253,230,138,0.9));padding:2.5rem;border-radius:2rem;box-shadow:0 15px 40px rgba(0,0,0,0.2);">
+      <h2 style="color:#92400e;font-size:2.2rem;margin-bottom:0.5rem;">${title}</h2>
+      <p style="color:#78350f;font-size:1.2rem;margin-bottom:1.5rem;">${subtitle}</p>
+      <div class="gallery">${photosHTML}</div>
+    </div>
+  `;
+}
+
+// ===== FINAL MESSAGE =====
+function createFinalMessage() {
+  return `
+    <div class="card" style="background:linear-gradient(135deg,#fef3c7,#fde68a);margin-top:2rem;">
+      <h2 style="margin-bottom:1.5rem;font-size:2.5rem;">🎁 You Did It, My Love! 🎁</h2>
+      <p style="font-size:1.4rem;color:#78350f;font-weight:600;line-height:2;">
+        You know what? Every moment with you is a treasure 💛<br>
+        Every smile, every laugh, every little thing... 🌻<br>
+        You're my sunshine, my peace, my everything 🐘<br>
+        Can't wait to buy you ALL the jhumke in the world! 💕<br><br>
+        <span style="font-size:1.8rem;background:linear-gradient(45deg,#ff6b35,#f7931e,#fdc500);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">
+          Love you forever, Gullu 🐘❤️✨
+        </span>
+      </p>
+    </div>
+  `;
+}
+
+// ===== VISUAL EFFECTS =====
+function popEmoji(emoji, x, y) {
+  const e = document.createElement("div");
+  e.className = "emoji";
+  e.textContent = emoji;
+  e.style.left = x + "px";
+  e.style.top = y + "px";
+  document.body.appendChild(e);
+  setTimeout(() => e.remove(), 1500);
+}
+
+function createHeartBurst(x, y) {
+  const burst = document.createElement("div");
+  burst.className = "heart-burst";
+  burst.style.left = x + "px";
+  burst.style.top = y + "px";
+  
+  for (let i = 0; i < 8; i++) {
+    const heart = document.createElement("div");
+    heart.className = "heart-particle";
+    heart.textContent = "💛";
+    heart.style.transform = `rotate(${i * 45}deg) translateX(0)`;
+    heart.style.animation = `heartBurst 1.5s ease-out forwards`;
+    heart.style.animationDelay = `${i * 0.05}s`;
+    burst.appendChild(heart);
+  }
+  
+  document.body.appendChild(burst);
+  setTimeout(() => burst.remove(), 2000);
+}
+
+function createSparkles(x, y) {
+  for (let i = 0; i < 6; i++) {
+    setTimeout(() => {
+      const sparkle = document.createElement("div");
+      sparkle.className = "sparkle";
+      sparkle.style.left = (x + (Math.random() - 0.5) * 40) + "px";
+      sparkle.style.top = (y + (Math.random() - 0.5) * 40) + "px";
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 1000);
+    }, i * 50);
+  }
+}
+
+function confettiBlast() {
+  const emojis = ["🌻","💛","🐘","💕","✨","🎉"];
+  for (let i = 0; i < 30; i++) {
+    setTimeout(() => {
+      const conf = document.createElement("div");
+      conf.className = "emoji";
+      conf.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+      conf.style.left = Math.random() * window.innerWidth + "px";
+      conf.style.top = "-50px";
+      conf.style.animation = "fall 3s linear forwards";
+      document.body.appendChild(conf);
+      setTimeout(() => conf.remove(), 3000);
+    }, i * 80);
+  }
+}
+
+// Cursor Trail
+document.addEventListener("mousemove", (e) => {
+  if (Math.random() > 0.8) {
+    const trail = document.createElement("div");
+    trail.className = "trail";
+    trail.textContent = ["🌻","💛","✨"][Math.floor(Math.random()*3)];
+    trail.style.left = e.pageX + "px";
+    trail.style.top = e.pageY + "px";
+    document.body.appendChild(trail);
+    setTimeout(() => trail.remove(), 1000);
+  }
+});
+
+// Floating Elements
+const floaties = ["🌻","💛","🐘","💕"];
+setInterval(() => {
+  const f = document.createElement("div");
+  f.className = "floating";
+  f.textContent = floaties[Math.floor(Math.random() * floaties.length)];
+  f.style.left = Math.random() * 100 + "%";
+  document.body.appendChild(f);
+  setTimeout(() => f.remove(), 5000);
+}, 1200);
+
+// Falling Petals
+setInterval(() => {
+  const petal = document.createElement("div");
+  petal.className = "petal";
+  petal.textContent = "🌻";
+  petal.style.left = Math.random() * 100 + "%";
+  petal.style.animationDuration = (3 + Math.random() * 4) + "s";
+  document.body.appendChild(petal);
+  setTimeout(() => petal.remove(), 8000);
+}, 800);
+
+// Initial welcome effect
+setTimeout(() => {
+  for (let i = 0; i < 10; i++) {
+    setTimeout(() => {
+      popEmoji(["🌻","💛"][i % 2], 
+        Math.random() * window.innerWidth, 
+        Math.random() * 200);
+    }, i * 100);
+  }
+}, 500);
+</script>
+</body>
+</html>
